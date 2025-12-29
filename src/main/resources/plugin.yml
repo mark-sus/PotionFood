@@ -1,0 +1,13 @@
+name: PotionFood
+version: '1.0-SNAPSHOT'
+main: me.mvk.potionFood.PotionFoodPlugin
+api-version: '1.21'
+commands:
+  potionfood:
+    usage: /potionfood reload
+    description: Reload PotionFood config
+    permission: potionfood.reload
+
+permissions:
+  potionfood.reload:
+    default: op
