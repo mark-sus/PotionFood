@@ -136,16 +136,13 @@ public class CraftListener implements Listener {
 
         int maxUses = plugin.getConfig().getInt("potion.max-uses", 16);
 
-        // 1️⃣ готову їжу — В ІНВЕНТАР
         player.getInventory().addItem(result.clone());
 
-        // 2️⃣ обробляємо матрицю
         ItemStack[] matrix = inv.getMatrix();
 
         for (ItemStack it : matrix) {
             if (it == null) continue;
 
-            // 🍖 їжа — повертаємо залишок в інвентар
             if (it.getType().isEdible()) {
                 it.setAmount(it.getAmount() - 1);
                 if (it.getAmount() > 0)
@@ -153,7 +150,6 @@ public class CraftListener implements Listener {
                 continue;
             }
 
-            // 🧪 зілля — зменшуємо uses і повертаємо в інвентар
             if (it.getItemMeta() instanceof PotionMeta pm) {
 
                 PersistentDataContainer pdc = pm.getPersistentDataContainer();
