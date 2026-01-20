@@ -1,5 +1,5 @@
 name: PotionFood
-version: '1.0-SNAPSHOT'
+version: '1.5'
 main: me.mvk.potionFood.PotionFoodPlugin
 api-version: '1.21'
 commands:

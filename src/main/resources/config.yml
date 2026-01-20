@@ -7,43 +7,16 @@ potion:
   max-uses: 16
 
   # формат лору
-  # %used% — залишилось
-  # %max% — максимум
   lore-format: "&7{%used%/%max%}"
 
-  # blacklist ефектів
-  blacklist:
-    - WITHER
-    - BAD_OMEN
-    - LEVITATION
+# Список ефектів, які заборонено додавати в їжу
+blacklist:
+  - WITHER
+  - BAD_OMEN
+  - LEVITATION
+  - HARM              # Миттєва шкода (Instant Damage)
 
 messages:
   potion-empty: "&cЗілля закінчилося"
   potion-blacklisted: "&cЦе зілля заборонене"
   potion-already-drank: "&cЗілля закінчилося"
-
-# ===============================
-# ОСОБЛИВІ ЕФЕКТИ
-# (як отруєння)
-# ===============================
-
-special-effects:
-
-  poison: #Назва зілля
-    enabled: true
-
-    on-eat: #Ефекти при поїданні
-      #  ЕФЕКТ:ЧАС:РІВЕНЬ (починаючи з 0)
-      - "NAUSEA:15:0"
-      - "POISON:10:1"
-      - "DARKNESS:2:0"
-
-  wither:
-    enabled: false
-    on-eat:
-      - "WITHER:6:1"
-
-  slowness:
-    enabled: false
-    on-eat:
-      - "SLOW:20:2"

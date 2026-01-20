@@ -12,7 +12,6 @@ public final class PotionUtil {
 
         List<PotionEffect> list = new ArrayList<>();
 
-        // custom effects
         if (!pm.getCustomEffects().isEmpty()) {
             list.addAll(pm.getCustomEffects());
             return list;
@@ -27,6 +26,7 @@ public final class PotionUtil {
             case "SPEED", "STRENGTH", "REGENERATION", "POISON" -> 3600;
             case "FIRE_RESISTANCE", "WATER_BREATHING", "INVISIBILITY" -> 3600;
             case "NIGHT_VISION" -> 3600;
+            case "INSTANT_HEALTH" -> 800;
             default -> 1200;
         };
 
