@@ -2,6 +2,7 @@ package me.mvk.potionFood;
 
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,6 +32,16 @@ public class ConsumeListener implements Listener {
         ItemMeta meta = item.getItemMeta();
         PersistentDataContainer data = meta.getPersistentDataContainer();
         Player player = event.getPlayer();
+
+        if (data.has(PotionFoodPlugin.SUPER_CARROT_KEY, PersistentDataType.BYTE)) {
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                player.setFoodLevel(20);
+                player.setSaturation(20f);
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 20, 0));
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_BURP, 1f, 1.5f);
+            });
+            return;
+        }
 
         if (meta instanceof PotionMeta) {
             if (data.has(PotionFoodPlugin.POTION_DRANK, PersistentDataType.BYTE)) {
@@ -75,7 +86,6 @@ public class ConsumeListener implements Listener {
 
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
                 player.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 20 * 2, 0));
-
                 player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 20 * 10, 1));
             }, 20 * 5);
         }

@@ -11,6 +11,9 @@ public class PotionFoodPlugin extends JavaPlugin {
 
     public static NamespacedKey STATION_KEY;
     public static NamespacedKey HOLOGRAM_KEY;
+    public static NamespacedKey INVENTORY_DATA_KEY;
+
+    public static NamespacedKey SUPER_CARROT_KEY;
 
     private MenuHandler menuHandler;
 
@@ -25,11 +28,11 @@ public class PotionFoodPlugin extends JavaPlugin {
 
         STATION_KEY = new NamespacedKey(this, "station_active");
         HOLOGRAM_KEY = new NamespacedKey(this, "station_hologram");
+        SUPER_CARROT_KEY = new NamespacedKey(this, "super_carrot");
 
         menuHandler = new MenuHandler(this);
         getServer().getPluginManager().registerEvents(menuHandler, this);
         getServer().getPluginManager().registerEvents(new ConsumeListener(this), this);
-
         getServer().getPluginManager().registerEvents(new StationListener(this, menuHandler), this);
 
         getCommand("potionfood").setExecutor((sender, cmd, label, args) -> {
